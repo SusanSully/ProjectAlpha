@@ -552,11 +552,11 @@ export class LocationModule extends SimpleLocationModule {
     } = {}
   ): string {
     const { abbreviated = false } = options;
-    const stateDataSet = abbreviated
+    const data = abbreviated
       ? this.faker.definitions.location.state_abbr
       : this.faker.definitions.location.state;
 
-    return this.faker.helpers.arrayElement(stateDataSet);
+    return this.faker.helpers.arrayElement(data);
   }
 
   /**
@@ -584,18 +584,12 @@ export class LocationModule extends SimpleLocationModule {
     } = {}
   ): string {
     const { abbreviated = false } = options;
+    const direction = this.faker.definitions.location.direction;
+    const data = abbreviated
+      ? [...direction.cardinal_abbr, ...direction.ordinal_abbr]
+      : [...direction.cardinal, ...direction.ordinal];
 
-    if (!abbreviated) {
-      return this.faker.helpers.arrayElement([
-        ...this.faker.definitions.location.direction.cardinal,
-        ...this.faker.definitions.location.direction.ordinal,
-      ]);
-    }
-
-    return this.faker.helpers.arrayElement([
-      ...this.faker.definitions.location.direction.cardinal_abbr,
-      ...this.faker.definitions.location.direction.ordinal_abbr,
-    ]);
+    return this.faker.helpers.arrayElement(data);
   }
 
   /**
@@ -623,16 +617,10 @@ export class LocationModule extends SimpleLocationModule {
     } = {}
   ): string {
     const { abbreviated = false } = options;
+    const direction = this.faker.definitions.location.direction;
+    const data = abbreviated ? direction.cardinal_abbr : direction.cardinal;
 
-    if (!abbreviated) {
-      return this.faker.helpers.arrayElement(
-        this.faker.definitions.location.direction.cardinal
-      );
-    }
-
-    return this.faker.helpers.arrayElement(
-      this.faker.definitions.location.direction.cardinal_abbr
-    );
+    return this.faker.helpers.arrayElement(data);
   }
 
   /**
@@ -660,16 +648,10 @@ export class LocationModule extends SimpleLocationModule {
     } = {}
   ): string {
     const { abbreviated = false } = options;
+    const direction = this.faker.definitions.location.direction;
+    const data = abbreviated ? direction.ordinal_abbr : direction.ordinal;
 
-    if (!abbreviated) {
-      return this.faker.helpers.arrayElement(
-        this.faker.definitions.location.direction.ordinal
-      );
-    }
-
-    return this.faker.helpers.arrayElement(
-      this.faker.definitions.location.direction.ordinal_abbr
-    );
+    return this.faker.helpers.arrayElement(data);
   }
 
   /**
