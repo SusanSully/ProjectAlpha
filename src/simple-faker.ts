@@ -7,8 +7,8 @@ import { SimpleHelpersModule } from './modules/helpers';
 import { SimpleLocationModule } from './modules/location';
 import { NumberModule } from './modules/number';
 import { StringModule } from './modules/string';
-
-export const DEFAULT_REF_DATE_SOURCE: () => Date = () => new Date();
+import { getDefaultRefDate as utilsGetDefaultRefDate } from './utils/get-default-ref-date';
+import { setDefaultRefDate as utilsSetDefaultRefDate } from './utils/set-default-ref-date';
 
 /**
  * This is a simplified Faker class that doesn't need any localized data to generate its output.
@@ -42,7 +42,7 @@ export class SimpleFaker {
    * Gets a new reference date used to generate relative dates.
    */
   get defaultRefDate(): () => Date {
-    return this.fakerCore.config.defaultRefDate ?? DEFAULT_REF_DATE_SOURCE;
+    return () => utilsGetDefaultRefDate(this.fakerCore);
   }
 
   /**
@@ -56,17 +56,17 @@ export class SimpleFaker {
    * @see faker.seed(): For generating reproducible values.
    *
    * @example
-   * faker.seed(1234);
-   *
-   * // Default behavior
+   * // Default
+   * faker.seed(1234); // Keep `past()` offset consistent for example runs
    * // faker.setDefaultRefDate();
    * faker.date.past(); // Changes based on the current date/time
-   *
-   * // Use a static ref date
+   * @example
+   * // Fixed
+   * faker.seed(1234);
    * faker.setDefaultRefDate(new Date('2020-01-01'));
    * faker.date.past(); // Reproducible '2019-07-03T08:27:58.118Z'
-   *
-   * // Use a ref date that changes every time it is used
+   * @example
+   * // Tick on use
    * let clock = new Date("2020-01-01").getTime();
    * faker.setDefaultRefDate(() => {
    *   clock += 1000; // +1s
@@ -81,11 +81,7 @@ export class SimpleFaker {
   setDefaultRefDate(
     dateOrSource: string | Date | number | (() => Date) = () => new Date()
   ): void {
-    if (typeof dateOrSource === 'function') {
-      this.fakerCore.config.defaultRefDate = dateOrSource;
-    } else {
-      this.fakerCore.config.defaultRefDate = () => new Date(dateOrSource);
-    }
+    utilsSetDefaultRefDate(this.fakerCore, dateOrSource);
   }
 
   readonly datatype: DatatypeModule = new DatatypeModule(this);
