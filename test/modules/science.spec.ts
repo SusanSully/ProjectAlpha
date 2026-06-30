@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { faker } from '../../src';
 import { seededTests } from '../support/seeded-runs';
-import { times } from './../support/times';
+import { times } from '../support/times';
 
 const NON_SEEDED_BASED_RUN = 5;
 
@@ -24,33 +24,33 @@ describe('science', () => {
           const name = faker.science.chemicalElement().name;
 
           expect(name).toBeTypeOf('string');
-          expect(() => {
+          expect(
             faker.definitions.science.chemical_element.find(
               (element) => element.name === name
-            );
-          }).toBeTruthy();
+            )
+          ).toBeTruthy();
         });
 
         it('should return a valid element symbol when referenced into', () => {
           const symbol = faker.science.chemicalElement().symbol;
 
           expect(symbol).toBeTypeOf('string');
-          expect(() => {
+          expect(
             faker.definitions.science.chemical_element.find(
               (element) => element.symbol === symbol
-            );
-          }).toBeTruthy();
+            )
+          ).toBeTruthy();
         });
 
         it('should return a valid element atomic number when referenced into', () => {
           const atomicNumber = faker.science.chemicalElement().atomicNumber;
 
           expect(atomicNumber).toBeTypeOf('number');
-          expect(() => {
+          expect(
             faker.definitions.science.chemical_element.find(
               (element) => element.atomicNumber === atomicNumber
-            );
-          }).toBeTruthy();
+            )
+          ).toBeTruthy();
         });
       });
 
@@ -65,20 +65,20 @@ describe('science', () => {
           const name = faker.science.unit().name;
 
           expect(name).toBeTypeOf('string');
-          expect(() => {
-            faker.definitions.science.unit.find((unit) => unit.name === name);
-          }).toBeTruthy();
+          expect(
+            faker.definitions.science.unit.find((unit) => unit.name === name)
+          ).toBeTruthy();
         });
 
         it('should return a valid unit symbol when referenced into', () => {
           const symbol = faker.science.unit().symbol;
 
           expect(symbol).toBeTypeOf('string');
-          expect(() => {
+          expect(
             faker.definitions.science.unit.find(
               (unit) => unit.symbol === symbol
-            );
-          }).toBeTruthy();
+            )
+          ).toBeTruthy();
         });
       });
     }

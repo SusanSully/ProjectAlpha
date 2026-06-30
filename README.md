@@ -4,7 +4,7 @@
   <p>Generate massive amounts of fake (but realistic) data for testing and development.</p>
   
   [![npm version](https://badgen.net/npm/v/@faker-js/faker)](https://www.npmjs.com/package/@faker-js/faker)
-  [![npm downloads](https://badgen.net/npm/dm/@faker-js/faker)](https://npm-compare.com/@faker-js/faker/#timeRange=ALL)
+  [![npm downloads](https://badgen.net/npm/dm/@faker-js/faker)](https://www.npmjs.com/package/@faker-js/faker)
   [![Continuous Integration](https://github.com/faker-js/faker/actions/workflows/ci.yml/badge.svg)](https://github.com/faker-js/faker/actions/workflows/ci.yml)
   [![codecov](https://codecov.io/gh/faker-js/faker/branch/next/graph/badge.svg?token=N61U168G08)](https://codecov.io/gh/faker-js/faker)
   [![Chat on Discord](https://img.shields.io/badge/chat-discord-blue?style=flat&logo=discord)](https://chat.fakerjs.dev)
@@ -24,11 +24,11 @@ Please proceed to the [Getting Started Guide](https://fakerjs.dev/guide/) for th
 
 For detailed API documentation, please select the version of the documentation you are looking for.
 
-|   Version   | Website                   |
-| :---------: | :------------------------ |
-|  v9 (next)  | https://next.fakerjs.dev/ |
-| v9 (stable) | https://fakerjs.dev/      |
-|  v8 (old)   | https://v8.fakerjs.dev/   |
+|   Version    | Website                   |
+| :----------: | :------------------------ |
+|  v10 (next)  | https://next.fakerjs.dev/ |
+| v10 (stable) | https://fakerjs.dev/      |
+|   v9 (old)   | https://v9.fakerjs.dev/   |
 
 ---
 
@@ -41,7 +41,7 @@ For detailed API documentation, please select the version of the documentation y
 - 👠 Commerce - Generate Prices, Product Names, Adjectives, and Descriptions.
 - 👾 Hacker - “Try to reboot the SQL bus, maybe it will bypass the virtual application!”
 - 🔢 Number and String - Of course, we can also generate random numbers and strings.
-- 🌏 Localization - Pick from over 60 locales to generate realistic looking Names, Addresses, and Phone Numbers.
+- 🌏 Localization - Pick from over 70 locales to generate realistic looking Names, Addresses, and Phone Numbers.
 
 > **Note**: Faker tries to generate realistic data and not obvious fake data.
 > The generated names, addresses, emails, phone numbers, and/or other data might be coincidentally valid information.
@@ -65,7 +65,7 @@ const { faker } = require('@faker-js/faker');
 export function createRandomUser() {
   return {
     userId: faker.string.uuid(),
-    username: faker.internet.username(), // before version 9.1.0, use userName()
+    username: faker.internet.username(),
     email: faker.internet.email(),
     avatar: faker.image.avatar(),
     password: faker.internet.password(),
@@ -81,7 +81,7 @@ export const users = faker.helpers.multiple(createRandomUser, {
 
 ## 💎 Modules
 
-An in-depth overview of the API methods is available in the documentation for [v9 (stable)](https://fakerjs.dev/api/) and [v9.\* (next)](https://next.fakerjs.dev/api/).
+An in-depth overview of the API methods is available in the documentation for [v10 (stable)](https://fakerjs.dev/api/) and [v10.\* (next)](https://next.fakerjs.dev/api/).
 
 ### Templates
 
@@ -126,7 +126,7 @@ export const faker = new Faker({
 
 ## ⚙️ Setting a randomness seed
 
-If you want consistent results, you can set your own seed:
+If you want consistent results, you can set your own seed. If you are using `faker.date` methods, there are additional considerations. See [Reproducible Results](https://fakerjs.dev/guide/usage.html#reproducible-results).
 
 ```ts
 faker.seed(123);

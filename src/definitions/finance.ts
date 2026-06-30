@@ -18,7 +18,14 @@ export type FinanceDefinition = LocaleEntry<{
   credit_card: { [issuer: string]: string[] };
 
   /**
-   * Currencies including their name, code and symbol (e.g. `US Dollar` / `USD` / `$`).
+   * The first four digits of a US American Bankers Association (ABA) routing number.
+   * Digits 0-1 determine the federal district
+   * Digits 2-3 determine the city within that district
+   */
+  federal_reserve_routing_symbol: string[];
+
+  /**
+   * Currencies including their name, code, symbol and ISO numeric code (e.g. `US Dollar` / `USD` / `$` / '840').
    */
   currency: Currency[];
 

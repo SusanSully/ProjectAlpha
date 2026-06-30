@@ -9,13 +9,18 @@ exports[`method > expected and actual methods are equal 1`] = `
   "methodWithDeprecated",
   "methodWithDeprecatedOption",
   "methodWithExample",
+  "methodWithExperimental",
+  "methodWithMultipleExamples",
+  "methodWithMultipleRemarks",
   "methodWithMultipleSeeMarkers",
   "methodWithMultipleSeeMarkersAndBackticks",
   "methodWithMultipleThrows",
+  "methodWithRemark",
   "methodWithSinceMarker",
   "methodWithThrows",
   "multiParamMethod",
   "noParamMethod",
+  "numberRangeParamMethod",
   "optionalStringParamMethod",
   "optionsInlineParamMethodWithDefaults",
   "optionsInterfaceParamMethodWithDefaults",
@@ -35,6 +40,7 @@ exports[`method > processMethodLike(complexArrayParameter) 1`] = `
       "deprecated": undefined,
       "description": "Complex array parameter.",
       "examples": [],
+      "experimental": undefined,
       "parameters": [
         {
           "default": undefined,
@@ -83,6 +89,7 @@ exports[`method > processMethodLike(complexArrayParameter) 1`] = `
           },
         },
       ],
+      "remarks": [],
       "returns": {
         "resolvedType": {
           "text": "any",
@@ -118,6 +125,7 @@ exports[`method > processMethodLike(defaultBooleanParamMethod) 1`] = `
       "deprecated": undefined,
       "description": "Test with a default parameter.",
       "examples": [],
+      "experimental": undefined,
       "parameters": [
         {
           "default": "true",
@@ -129,6 +137,7 @@ exports[`method > processMethodLike(defaultBooleanParamMethod) 1`] = `
           },
         },
       ],
+      "remarks": [],
       "returns": {
         "text": "number",
         "type": "simple",
@@ -155,6 +164,7 @@ exports[`method > processMethodLike(functionParamMethod) 1`] = `
       "deprecated": undefined,
       "description": "Test with a function parameters.",
       "examples": [],
+      "experimental": undefined,
       "parameters": [
         {
           "default": undefined,
@@ -166,6 +176,7 @@ exports[`method > processMethodLike(functionParamMethod) 1`] = `
           },
         },
       ],
+      "remarks": [],
       "returns": {
         "text": "number",
         "type": "simple",
@@ -192,6 +203,7 @@ exports[`method > processMethodLike(literalUnionParamMethod) 1`] = `
       "deprecated": undefined,
       "description": "Test with LiteralUnion.",
       "examples": [],
+      "experimental": undefined,
       "parameters": [
         {
           "default": undefined,
@@ -331,7 +343,7 @@ exports[`method > processMethodLike(literalUnionParamMethod) 1`] = `
         },
         {
           "default": undefined,
-          "description": "Value \`'a'\` or \`'b'\` or an array thereof.",
+          "description": "\`'a'\` or \`'b'\` or an array thereof.",
           "name": "mixed",
           "type": {
             "text": "'a' | 'b' | string | Array<'a' | 'b' | string>",
@@ -384,7 +396,7 @@ exports[`method > processMethodLike(literalUnionParamMethod) 1`] = `
         },
         {
           "default": undefined,
-          "description": "Value \`'a'\` or \`'b'\` or an array thereof.",
+          "description": "\`'a'\` or \`'b'\` or an array thereof.",
           "name": "namedMixed",
           "type": {
             "text": "'a' | 'b' | string | Array<AB | string>",
@@ -440,6 +452,7 @@ exports[`method > processMethodLike(literalUnionParamMethod) 1`] = `
           },
         },
       ],
+      "remarks": [],
       "returns": {
         "text": "string",
         "type": "simple",
@@ -473,7 +486,9 @@ exports[`method > processMethodLike(methodWithDeprecated) 1`] = `
       "deprecated": "do something else",
       "description": "Test with deprecated and see marker.",
       "examples": [],
+      "experimental": undefined,
       "parameters": [],
+      "remarks": [],
       "returns": {
         "text": "number",
         "type": "simple",
@@ -502,6 +517,7 @@ exports[`method > processMethodLike(methodWithDeprecatedOption) 1`] = `
       "deprecated": undefined,
       "description": "Test with deprecated option.",
       "examples": [],
+      "experimental": undefined,
       "parameters": [
         {
           "default": undefined,
@@ -544,6 +560,7 @@ exports[`method > processMethodLike(methodWithDeprecatedOption) 1`] = `
           },
         },
       ],
+      "remarks": [],
       "returns": {
         "text": "number",
         "type": "simple",
@@ -576,13 +593,112 @@ exports[`method > processMethodLike(methodWithExample) 1`] = `
       "examples": [
         "test.apidocs.methodWithExample() // 0",
       ],
+      "experimental": undefined,
       "parameters": [],
+      "remarks": [],
       "returns": {
         "text": "number",
         "type": "simple",
       },
       "seeAlsos": [],
       "signature": "function methodWithExample(): number;",
+      "since": "1.0.0",
+      "throws": [],
+    },
+  ],
+  "source": {
+    "column": -1,
+    "filePath": "test/scripts/apidocs/method.example.ts",
+    "line": -1,
+  },
+}
+`;
+
+exports[`method > processMethodLike(methodWithExperimental) 1`] = `
+{
+  "name": "methodWithExperimental",
+  "signatures": [
+    {
+      "deprecated": undefined,
+      "description": "Test with experimental .",
+      "examples": [],
+      "experimental": true,
+      "parameters": [],
+      "remarks": [],
+      "returns": {
+        "text": "number",
+        "type": "simple",
+      },
+      "seeAlsos": [],
+      "signature": "function methodWithExperimental(): number;",
+      "since": "1.0.0",
+      "throws": [],
+    },
+  ],
+  "source": {
+    "column": -1,
+    "filePath": "test/scripts/apidocs/method.example.ts",
+    "line": -1,
+  },
+}
+`;
+
+exports[`method > processMethodLike(methodWithMultipleExamples) 1`] = `
+{
+  "name": "methodWithMultipleExamples",
+  "signatures": [
+    {
+      "deprecated": undefined,
+      "description": "Test with multiple example markers.",
+      "examples": [
+        "// Inline usage
+test.apidocs.methodWithMultipleExamples() // 0",
+        "// Stored in a variable
+const value = test.apidocs.methodWithMultipleExamples();
+console.log(value); // 0",
+      ],
+      "experimental": undefined,
+      "parameters": [],
+      "remarks": [],
+      "returns": {
+        "text": "number",
+        "type": "simple",
+      },
+      "seeAlsos": [],
+      "signature": "function methodWithMultipleExamples(): number;",
+      "since": "1.0.0",
+      "throws": [],
+    },
+  ],
+  "source": {
+    "column": -1,
+    "filePath": "test/scripts/apidocs/method.example.ts",
+    "line": -1,
+  },
+}
+`;
+
+exports[`method > processMethodLike(methodWithMultipleRemarks) 1`] = `
+{
+  "name": "methodWithMultipleRemarks",
+  "signatures": [
+    {
+      "deprecated": undefined,
+      "description": "Test with multiple remark markers.",
+      "examples": [],
+      "experimental": undefined,
+      "parameters": [],
+      "remarks": [
+        "First special text.",
+        "Second special text.",
+        "Third special text.",
+      ],
+      "returns": {
+        "text": "number",
+        "type": "simple",
+      },
+      "seeAlsos": [],
+      "signature": "function methodWithMultipleRemarks(): number;",
       "since": "1.0.0",
       "throws": [],
     },
@@ -603,7 +719,9 @@ exports[`method > processMethodLike(methodWithMultipleSeeMarkers) 1`] = `
       "deprecated": undefined,
       "description": "Test with multiple see markers.",
       "examples": [],
+      "experimental": undefined,
       "parameters": [],
+      "remarks": [],
       "returns": {
         "text": "number",
         "type": "simple",
@@ -633,7 +751,9 @@ exports[`method > processMethodLike(methodWithMultipleSeeMarkersAndBackticks) 1`
       "deprecated": undefined,
       "description": "Test with multiple see markers and backticks.",
       "examples": [],
+      "experimental": undefined,
       "parameters": [],
+      "remarks": [],
       "returns": {
         "text": "number",
         "type": "simple",
@@ -663,7 +783,9 @@ exports[`method > processMethodLike(methodWithMultipleThrows) 1`] = `
       "deprecated": undefined,
       "description": "Test with multiple throws.",
       "examples": [],
+      "experimental": undefined,
       "parameters": [],
+      "remarks": [],
       "returns": {
         "text": "number",
         "type": "simple",
@@ -685,6 +807,37 @@ exports[`method > processMethodLike(methodWithMultipleThrows) 1`] = `
 }
 `;
 
+exports[`method > processMethodLike(methodWithRemark) 1`] = `
+{
+  "name": "methodWithRemark",
+  "signatures": [
+    {
+      "deprecated": undefined,
+      "description": "Test with remark marker.",
+      "examples": [],
+      "experimental": undefined,
+      "parameters": [],
+      "remarks": [
+        "This text is special.",
+      ],
+      "returns": {
+        "text": "number",
+        "type": "simple",
+      },
+      "seeAlsos": [],
+      "signature": "function methodWithRemark(): number;",
+      "since": "1.0.0",
+      "throws": [],
+    },
+  ],
+  "source": {
+    "column": -1,
+    "filePath": "test/scripts/apidocs/method.example.ts",
+    "line": -1,
+  },
+}
+`;
+
 exports[`method > processMethodLike(methodWithSinceMarker) 1`] = `
 {
   "name": "methodWithSinceMarker",
@@ -693,7 +846,9 @@ exports[`method > processMethodLike(methodWithSinceMarker) 1`] = `
       "deprecated": undefined,
       "description": "Test with since marker.",
       "examples": [],
+      "experimental": undefined,
       "parameters": [],
+      "remarks": [],
       "returns": {
         "text": "number",
         "type": "simple",
@@ -720,7 +875,9 @@ exports[`method > processMethodLike(methodWithThrows) 1`] = `
       "deprecated": undefined,
       "description": "Test with throws.",
       "examples": [],
+      "experimental": undefined,
       "parameters": [],
+      "remarks": [],
       "returns": {
         "text": "number",
         "type": "simple",
@@ -749,6 +906,7 @@ exports[`method > processMethodLike(multiParamMethod) 1`] = `
       "deprecated": undefined,
       "description": "Test with multiple parameters.",
       "examples": [],
+      "experimental": undefined,
       "parameters": [
         {
           "default": undefined,
@@ -778,6 +936,7 @@ exports[`method > processMethodLike(multiParamMethod) 1`] = `
           },
         },
       ],
+      "remarks": [],
       "returns": {
         "text": "number",
         "type": "simple",
@@ -804,13 +963,120 @@ exports[`method > processMethodLike(noParamMethod) 1`] = `
       "deprecated": undefined,
       "description": "Test with no parameters.",
       "examples": [],
+      "experimental": undefined,
       "parameters": [],
+      "remarks": [],
       "returns": {
         "text": "number",
         "type": "simple",
       },
       "seeAlsos": [],
       "signature": "function noParamMethod(): number;",
+      "since": "1.0.0",
+      "throws": [],
+    },
+  ],
+  "source": {
+    "column": -1,
+    "filePath": "test/scripts/apidocs/method.example.ts",
+    "line": -1,
+  },
+}
+`;
+
+exports[`method > processMethodLike(numberRangeParamMethod) 1`] = `
+{
+  "name": "numberRangeParamMethod",
+  "signatures": [
+    {
+      "deprecated": undefined,
+      "description": "Test with NumberRange.",
+      "examples": [],
+      "experimental": undefined,
+      "parameters": [
+        {
+          "default": undefined,
+          "description": "\`{min: 1, max: 10}\`.",
+          "name": "value",
+          "type": {
+            "text": "{ min: number; max: number }",
+            "type": "simple",
+          },
+        },
+        {
+          "default": undefined,
+          "description": "Array of \`{min: 1, max: 10}\`.",
+          "name": "array",
+          "type": {
+            "text": "Array<{ min: number; max: number }>",
+            "type": "generic",
+            "typeParameters": [
+              {
+                "text": "{ min: number; max: number }",
+                "type": "simple",
+              },
+            ],
+          },
+        },
+        {
+          "default": undefined,
+          "description": "The options parameter.",
+          "name": "options",
+          "type": {
+            "text": "{ ... }",
+            "type": "simple",
+          },
+        },
+        {
+          "default": undefined,
+          "description": "The count parameter.",
+          "name": "options.count",
+          "type": {
+            "text": "{ min: number; max: number }",
+            "type": "simple",
+          },
+        },
+        {
+          "default": undefined,
+          "description": "\`{min: 1, max: 10}\` or an array thereof.",
+          "name": "mixed",
+          "type": {
+            "text": "{ min: number; max: number } | Array<{ min: number; max: number }>",
+            "type": "union",
+            "types": [
+              {
+                "text": "{ min: number; max: number }",
+                "type": "simple",
+              },
+              {
+                "text": "Array<{ min: number; max: number }>",
+                "type": "generic",
+                "typeParameters": [
+                  {
+                    "text": "{ min: number; max: number }",
+                    "type": "simple",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      ],
+      "remarks": [],
+      "returns": {
+        "text": "string",
+        "type": "simple",
+      },
+      "seeAlsos": [],
+      "signature": "function numberRangeParamMethod(
+    value: NumberRange,
+    array: ReadonlyArray<NumberRange>,
+    options: {
+      /** The count parameter. */
+      count: NumberRange;
+    },
+    mixed: NumberRange | ReadonlyArray<NumberRange>
+  ): string;",
       "since": "1.0.0",
       "throws": [],
     },
@@ -831,6 +1097,7 @@ exports[`method > processMethodLike(optionalStringParamMethod) 1`] = `
       "deprecated": undefined,
       "description": "Test with an optional parameter.",
       "examples": [],
+      "experimental": undefined,
       "parameters": [
         {
           "default": undefined,
@@ -842,6 +1109,7 @@ exports[`method > processMethodLike(optionalStringParamMethod) 1`] = `
           },
         },
       ],
+      "remarks": [],
       "returns": {
         "text": "number",
         "type": "simple",
@@ -868,6 +1136,7 @@ exports[`method > processMethodLike(optionsInlineParamMethodWithDefaults) 1`] = 
       "deprecated": undefined,
       "description": "Test with a function parameters (inline types) with defaults.",
       "examples": [],
+      "experimental": undefined,
       "parameters": [
         {
           "default": "{ value: 1 }",
@@ -929,6 +1198,7 @@ Defaults to \`{ value: 1 }\`.",
           },
         },
       ],
+      "remarks": [],
       "returns": {
         "text": "number",
         "type": "simple",
@@ -965,6 +1235,7 @@ exports[`method > processMethodLike(optionsInterfaceParamMethodWithDefaults) 1`]
       "deprecated": undefined,
       "description": "Test with a function parameters with defaults.",
       "examples": [],
+      "experimental": undefined,
       "parameters": [
         {
           "default": "{ value: 1 }",
@@ -994,6 +1265,7 @@ exports[`method > processMethodLike(optionsInterfaceParamMethodWithDefaults) 1`]
           },
         },
       ],
+      "remarks": [],
       "returns": {
         "text": "number",
         "type": "simple",
@@ -1024,6 +1296,7 @@ exports[`method > processMethodLike(optionsParamMethod) 1`] = `
       "deprecated": undefined,
       "description": "Test with an options parameter.",
       "examples": [],
+      "experimental": undefined,
       "parameters": [
         {
           "default": undefined,
@@ -1100,6 +1373,7 @@ exports[`method > processMethodLike(optionsParamMethod) 1`] = `
           },
         },
       ],
+      "remarks": [],
       "returns": {
         "text": "number",
         "type": "simple",
@@ -1132,6 +1406,7 @@ exports[`method > processMethodLike(optionsTypeParamMethodWithDefaults) 1`] = `
       "deprecated": undefined,
       "description": "Test with a function parameters with defaults.",
       "examples": [],
+      "experimental": undefined,
       "parameters": [
         {
           "default": "{ value: 1 }",
@@ -1188,6 +1463,7 @@ exports[`method > processMethodLike(optionsTypeParamMethodWithDefaults) 1`] = `
           },
         },
       ],
+      "remarks": [],
       "returns": {
         "text": "number",
         "type": "simple",
@@ -1218,6 +1494,7 @@ exports[`method > processMethodLike(recordParamMethod) 1`] = `
       "deprecated": undefined,
       "description": "Test with a Record parameter.",
       "examples": [],
+      "experimental": undefined,
       "parameters": [
         {
           "default": undefined,
@@ -1229,6 +1506,7 @@ exports[`method > processMethodLike(recordParamMethod) 1`] = `
           },
         },
       ],
+      "remarks": [],
       "returns": {
         "text": "number",
         "type": "simple",
@@ -1255,6 +1533,7 @@ exports[`method > processMethodLike(requiredNumberParamMethod) 1`] = `
       "deprecated": undefined,
       "description": "Test with a required parameter.",
       "examples": [],
+      "experimental": undefined,
       "parameters": [
         {
           "default": undefined,
@@ -1266,6 +1545,7 @@ exports[`method > processMethodLike(requiredNumberParamMethod) 1`] = `
           },
         },
       ],
+      "remarks": [],
       "returns": {
         "text": "number",
         "type": "simple",
@@ -1292,6 +1572,7 @@ exports[`method > processMethodLike(stringUnionParamMethod) 1`] = `
       "deprecated": undefined,
       "description": "Test with string union.",
       "examples": [],
+      "experimental": undefined,
       "parameters": [
         {
           "default": undefined,
@@ -1327,15 +1608,15 @@ exports[`method > processMethodLike(stringUnionParamMethod) 1`] = `
           "name": "options.casing?",
           "type": {
             "resolvedType": {
-              "text": "'lower' | 'upper' | 'mixed'",
+              "text": "'upper' | 'lower' | 'mixed'",
               "type": "union",
               "types": [
                 {
-                  "text": "'lower'",
+                  "text": "'upper'",
                   "type": "simple",
                 },
                 {
-                  "text": "'upper'",
+                  "text": "'lower'",
                   "type": "simple",
                 },
                 {
@@ -1645,6 +1926,7 @@ exports[`method > processMethodLike(stringUnionParamMethod) 1`] = `
           },
         },
       ],
+      "remarks": [],
       "returns": {
         "text": "string",
         "type": "simple",
